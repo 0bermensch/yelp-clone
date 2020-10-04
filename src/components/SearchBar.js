@@ -19,7 +19,9 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
   );
 };
 
-const styles = (StyleSheet.create = {
+export default SearchBar;
+
+const styles = StyleSheet.create({
   backgroundStyle: {
     marginTop: 10,
     backgroundColor: "#F0EEEE",
@@ -28,6 +30,7 @@ const styles = (StyleSheet.create = {
     marginHorizontal: 15,
     display: "flex",
     flexDirection: "row",
+    marginBottom: 10,
   },
   inputStyle: {
     flex: 1,
@@ -39,5 +42,3 @@ const styles = (StyleSheet.create = {
     marginHorizontal: 15,
   },
 });
-
-export default SearchBar;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useResults from "../hooks/useResults";
-import ResultList from "../components/ResultList";
+import ResultsList from "../components/ResultsList";
 
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
@@ -15,22 +15,29 @@ const SearchScreen = () => {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <SearchBar
         term={term}
         onTermChange={setTerm}
         onTermSubmit={() => searchApi(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {results.length} results</Text>
-      <ResultList results={filterResultsByPrice("$")} title="Cost Effective" />
-      <ResultList results={filterResultsByPrice("$$")} title="Bit Pricier" />
-      <ResultList results={filterResultsByPrice("$$$")} title="Expensive" />
-      <ResultList results={filterResultsByPrice("$$$$")} title="Expensive af" />
+      <ScrollView>
+        <ResultsList
+          results={filterResultsByPrice("$")}
+          title="Cost Effective"
+        />
+        <ResultsList results={filterResultsByPrice("$$")} title="Bit Pricier" />
+        <ResultsList results={filterResultsByPrice("$$$")} title="Expensive" />
+        <ResultsList
+          results={filterResultsByPrice("$$$$")}
+          title="Expensive af"
+        />
+      </ScrollView>
     </View>
   );
 };
 
-const styles = (StyleSheet.create = {});
-
 export default SearchScreen;
+
+const styles = StyleSheet.create({});

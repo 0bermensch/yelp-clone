@@ -12,7 +12,7 @@ const useResults = () => {
         params: {
           limit: 50,
           term: searchTerm,
-          location: "san jose",
+          location: "vancouver",
         },
       });
       setResults(response.data.businesses);
